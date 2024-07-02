@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <title>Taschenrechner</title>
+</head>
+<body>
+<!-- Aufgabe
+Erstelle 2 input-Felder die Zahlen aufnehmen
+Erstelle einen Knopf, der die 2 Inhalte ausliest und addiert
+Gib das Ergebnis in einem p-Tag aus.
+
+dieselben beiden Felder benutzen, jedoch brauchen wir 4 Knöpfe:
+jeweils mit +, -, /, *
+Der jeweils angeklickte Knopf soll die passende Rechenoperation ausführen und in das p-tag reinschreiben
+-->
+
+<label for="number1"></label><input type="number" id="number1" placeholder="Erste Zahl eingeben">
+<label for="number2"></label><input type="number" id="number2" placeholder="Zweite Zahl eingeben">
+
+<button onclick="berechne('+')">+</button>
+<button onclick="berechne('-')">-</button>
+<button onclick="berechne('*')">*</button>
+<button onclick="berechne('/')">/</button>
+
+<p id="ergebnis"></p>
+
+<script>
+    function berechne(operation) {
+        const zahl1 = parseFloat(document.getElementById('number1').value);
+        const zahl2 = parseFloat(document.getElementById('number2').value);
+        let ergebnis;
+
+        if (isNaN(zahl1) || isNaN(zahl2)) {
+            ergebnis = "Bitte gültige Zahlen in beide Felder eingeben.";
+        } else {
+            switch(operation) {
+                case '+':
+                    ergebnis = zahl1 + zahl2;
+                    break;
+                case '-':
+                    ergebnis = zahl1 - zahl2;
+                    break;
+                case '*':
+                    ergebnis = zahl1 * zahl2;
+                    break;
+                case '/':
+                    if (zahl2 !== 0) {
+                        ergebnis = zahl1 / zahl2;
+                    } else {
+                        ergebnis = "Durch null kann nicht geteilt werden.";
+                    }
+                    break;
+            }
+        }
+
+        document.getElementById('ergebnis').innerText = 'Ergebnis: ' + ergebnis;
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--
+    erstelle zwei input-text-Felder und einen Knopf
+    nach dem Knopf-Klick sollen die Werte der input-Felder ausgelesen werden
+    und hintereinander in einem paragraph-Feld ausgegeben werden.
+    Benutze dazu eine Funktion.
+    Die input-text-Felder bekommen die labels Vorname und Nachname,
+    der Knopf hat die Aufschrift Gesamtname.
+-->
+<label for="firstName">Vorname:</label>
+<input type="text" id="firstName"><br><br>
+
+<label for="lastName">Nachname:</label>
+<input type="text" id="lastName"><br><br>
+
+<button type="button" onclick="displayFullName()">Gesamtname</button>
+
+<p id="fullName"></p>
+
+<script>
+    function displayFullName() {
+        let firstName = document.getElementById('firstName').value;
+        let lastName = document.getElementById('lastName').value;
+        document.getElementById('fullName').innerText = firstName + " " + lastName;
+    }
+</script>
+</body>
+</html>
