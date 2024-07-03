@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>JavaScript in Body</h2>
+<!-- erstelle eine Funktion, die das klick-Event ersetzt. Nach dem Klicken des Knopfes soll die Funktion aufgerufen werden  -->
+
+<script>
+    function myFunction(element) {
+        document.getElementById("demo").innerHTML = element.innerHTML + "Hello JavaScript";
+    }
+</script>
+<!-- was passiert, wenn ich den p-Tag nach dieser Zeile erstellen lassen? -->
+
+<p id="demo"></p>
+<button type="button" onclick="myFunction(this)"> Klick mich! </button>
+</body>
+</html>
