@@ -24,11 +24,9 @@ Der jeweils angeklickte Knopf soll die passende Rechenoparation ausführen und i
 </p>
 <p id="ergebnis"></p>
 <script>
-    function getContentNumber1() {
-        return number1 = document.querySelector('#number1').value;
-    }
-    function getContentNumber2() {
-        return number2 = document.querySelector('#number2').value;
+    function getContentNumber(zahl) {
+        let idString = '#number' + zahl;
+        return Number(document.querySelector(idString).value);
     }
     function writeErgebnis(ergebnis) {
         document.querySelector('#ergebnis').innerHTML = ergebnis;
@@ -37,13 +35,18 @@ Der jeweils angeklickte Knopf soll die passende Rechenoparation ausführen und i
         let ergebnis;
         let operator = element.innerHTML;
         if (operator === '+') {
-            ergebnis = Number(getContentNumber1()) + Number(getContentNumber2());
+            ergebnis = getContentNumber(1) + getContentNumber(2);
         } else if (operator === '-') {
-            ergebnis = Number(getContentNumber1()) - Number(getContentNumber2());
+            ergebnis = getContentNumber(1) - getContentNumber(2);
         } else if (operator === '/') {
-             ergebnis = Number(getContentNumber1()) / Number(getContentNumber2());
+            ergebnis = getContentNumber(1) / getContentNumber(2);
+            if (getContentNumber(2) === 0) {
+                ergebnis = 'Man darf nicht durch 0 dividieren';
+            }
         } else if (operator === '*') {
-             ergebnis = Number(getContentNumber1()) * Number(getContentNumber2());
+            ergebnis = getContentNumber(1) * getContentNumber(2);
+        } else {
+            ergebnis = 'Error';
         }
         writeErgebnis(ergebnis);
     }
